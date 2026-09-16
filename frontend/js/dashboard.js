@@ -2,114 +2,94 @@
 // DASHBOARD NAVIGATION
 // ========================================
 
-function showModule(module){
+function showModule(module) {
 
-    const content =
-    document.getElementById("content");
+    const content = document.getElementById("content");
 
-    switch(module){
+    switch (module) {
 
         // ========================================
         // DASHBOARD
         // ========================================
 
-       case "dashboard":
+        case "dashboard":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<div class="cards">
+            <div class="cards">
 
-    <div class="card employees">
+                <div class="card employees">
+                    <i class="fas fa-users"></i>
+                    <h3>Total Employees</h3>
+                    <p id="employeeCount">0</p>
+                </div>
 
-        <i class="fas fa-users"></i>
+                <div class="card recruit">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Total Candidates</h3>
+                    <p id="candidateCount">0</p>
+                </div>
 
-        <h3>Total Employees</h3>
+                <div class="card attendance">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Attendance Records</h3>
+                    <p id="attendanceCount">0</p>
+                </div>
 
-        <p id="employeeCount">0</p>
+                <div class="card payroll">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Payroll Records</h3>
+                    <p id="payrollCount">0</p>
+                </div>
 
-    </div>
+                <div class="card employees">
+                    <i class="fas fa-plane-departure"></i>
+                    <h3>Leave Requests</h3>
+                    <p id="leaveCount">0</p>
+                </div>
 
-    <div class="card recruit">
+                <div class="card recruit">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Performance Reviews</h3>
+                    <p id="performanceCount">0</p>
+                </div>
 
-        <i class="fas fa-user-plus"></i>
+            </div>
 
-        <h3>Total Candidates</h3>
+            <br><br>
 
-        <p id="candidateCount">0</p>
+            <div class="report-buttons">
 
-    </div>
+                <button onclick="exportEmployees()">
+                    📥 Export Employees
+                </button>
 
-    <div class="card attendance">
+                <button onclick="exportAttendance()">
+                    📥 Export Attendance
+                </button>
 
-        <i class="fas fa-calendar-check"></i>
+                <button onclick="exportPayroll()">
+                    📥 Export Payroll
+                </button>
 
-        <h3>Attendance Records</h3>
+                <button onclick="refreshDashboard()">
+                    🔄 Refresh Dashboard
+                </button>
 
-        <p id="attendanceCount">0</p>
+            </div>
 
-    </div>
+            <p id="dashboardUpdated"
+               style="margin-top:15px;">
+                Dashboard loaded
+            </p>
 
-    <div class="card payroll">
+            `;
 
-        <i class="fas fa-money-bill-wave"></i>
+            loadDashboardStats();
 
-        <h3>Payroll Records</h3>
+            break;
 
-        <p id="payrollCount">0</p>
 
-    </div>
-
-    <div class="card employees">
-
-        <i class="fas fa-plane-departure"></i>
-
-        <h3>Leave Requests</h3>
-
-        <p id="leaveCount">0</p>
-
-    </div>
-
-    <div class="card recruit">
-
-        <i class="fas fa-chart-line"></i>
-
-        <h3>Performance Reviews</h3>
-
-        <p id="performanceCount">0</p>
-
-    </div>
-
-</div>
-
-<br><br>
-
-<div class="report-buttons">
-
-    <button onclick="exportEmployees()">
-
-        📥 Export Employees
-
-    </button>
-
-    <button onclick="exportAttendance()">
-
-        📥 Export Attendance
-
-    </button>
-
-    <button onclick="exportPayroll()">
-
-        📥 Export Payroll
-
-    </button>
-
-</div>
-
-`;
-
-loadDashboardStats();
-
-break;
         // ========================================
         // EMPLOYEE MANAGEMENT
         // ========================================
@@ -123,47 +103,43 @@ break;
             <br>
 
             <input
-            id="searchEmployee"
-            placeholder="Search Employee"
-            onkeyup="searchEmployee()">
+                id="searchEmployee"
+                placeholder="Search Employee"
+                onkeyup="searchEmployee()">
 
             <br><br>
 
             <input
-            id="name"
-            placeholder="Employee Name">
+                id="name"
+                placeholder="Employee Name">
 
             <input
-            id="email"
-            placeholder="Email">
+                id="email"
+                placeholder="Email">
 
             <input
-            id="department"
-            placeholder="Department">
+                id="department"
+                placeholder="Department">
 
             <input
-            id="designation"
-            placeholder="Designation">
+                id="designation"
+                placeholder="Designation">
 
             <input
-            id="salary"
-            placeholder="Salary">
+                id="salary"
+                placeholder="Salary">
 
             <button onclick="addEmployee()">
-
                 Add Employee
-
             </button>
 
             <br><br>
 
-            <table
-            id="employeeTable">
+            <table id="employeeTable">
 
                 <thead>
 
                     <tr>
-
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
@@ -171,7 +147,6 @@ break;
                         <th>Designation</th>
                         <th>Salary</th>
                         <th>Action</th>
-
                     </tr>
 
                 </thead>
@@ -188,75 +163,73 @@ break;
 
             break;
 
+
         // ========================================
         // RECRUITMENT MANAGEMENT
         // ========================================
 
         case "recruitment":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<h2>Recruitment Management</h2>
+            <h2>Recruitment Management</h2>
 
-<br>
+            <br>
 
-<div class="form-row">
+            <div class="form-row">
 
-    <input
-    id="candidateName"
-    placeholder="Candidate Name">
+                <input
+                    id="candidateName"
+                    placeholder="Candidate Name">
 
-    <input
-    id="candidateEmail"
-    placeholder="Email">
+                <input
+                    id="candidateEmail"
+                    placeholder="Email">
 
-    <input
-    id="candidateDepartment"
-    placeholder="Department">
+                <input
+                    id="candidateDepartment"
+                    placeholder="Department">
 
-    <input
-    id="candidateDesignation"
-    placeholder="Designation">
+                <input
+                    id="candidateDesignation"
+                    placeholder="Designation">
 
-    <button onclick="addCandidate()">
+                <button onclick="addCandidate()">
+                    Add Candidate
+                </button>
 
-        Add Candidate
+            </div>
 
-    </button>
+            <br>
 
-</div>
+            <table id="candidateTable">
 
-<br>
+                <thead>
 
-<table id="candidateTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Designation</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
 
-    <thead>
+                </thead>
 
-        <tr>
+                <tbody>
 
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Designation</th>
-            <th>Status</th>
-            <th>Action</th>
+                </tbody>
 
-        </tr>
+            </table>
 
-    </thead>
+            `;
 
-    <tbody>
+            fetchCandidates();
 
-    </tbody>
+            break;
 
-</table>
-
-`;
-
-fetchCandidates();
-
-break;
 
         // ========================================
         // ATTENDANCE
@@ -264,165 +237,159 @@ break;
 
         case "attendance":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<h2>Attendance Management</h2>
+            <h2>Attendance Management</h2>
 
-<br>
+            <br>
 
-<select id="attendanceEmployee">
+            <select id="attendanceEmployee">
 
-<option value="">
-Select Employee
-</option>
+                <option value="">
+                    Select Employee
+                </option>
 
-${employees.map(emp => `
-<option value="${emp.emp_name}">
-${emp.emp_name}
-</option>
-`).join("")}
-</select>
+                ${employees.map(emp => `
+                    <option value="${emp.emp_name}">
+                        ${emp.emp_name}
+                    </option>
+                `).join("")}
 
-<input
-type="date"
-id="attendanceDate">
+            </select>
 
-<select
-id="attendanceStatus">
+            <input
+                type="date"
+                id="attendanceDate">
 
-<option>
-Present
-</option>
+            <select id="attendanceStatus">
 
-<option>
-Absent
-</option>
+                <option>
+                    Present
+                </option>
 
-</select>
+                <option>
+                    Absent
+                </option>
 
-<button onclick="addAttendance()">
+            </select>
 
-Mark Attendance
+            <button onclick="addAttendance()">
+                Mark Attendance
+            </button>
 
-</button>
+            <br><br>
 
-<br><br>
+            <table id="attendanceTable">
 
-<table id="attendanceTable">
+                <thead>
 
-<thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
 
-<tr>
+                </thead>
 
-<th>ID</th>
-<th>Employee</th>
-<th>Date</th>
-<th>Status</th>
-<th>Action</th>
+                <tbody>
 
-</tr>
+                </tbody>
 
-</thead>
+            </table>
 
-<tbody>
+            `;
 
-</tbody>
+            loadAttendance();
 
-</table>
+            break;
 
-`;
 
-loadAttendance();
-
-break;
         // ========================================
         // LEAVE
         // ========================================
-case "leave":
 
-content.innerHTML = `
+        case "leave":
 
-<h2>Leave Management</h2>
+            content.innerHTML = `
 
-<br>
+            <h2>Leave Management</h2>
 
-<select id="leaveEmployee">
+            <br>
 
-    <option value="">
-    Select Employee
-    </option>
+            <select id="leaveEmployee">
 
-    ${employees.map(emp => `
+                <option value="">
+                    Select Employee
+                </option>
 
-    <option value="${emp.emp_name}">
-    ${emp.emp_name}
-    </option>
+                ${employees.map(emp => `
+                    <option value="${emp.emp_name}">
+                        ${emp.emp_name}
+                    </option>
+                `).join("")}
 
-    `).join("")}
+            </select>
 
-</select>
+            <select id="leaveType">
 
-<select id="leaveType">
+                <option>
+                    Casual Leave
+                </option>
 
-    <option>
-    Casual Leave
-    </option>
+                <option>
+                    Sick Leave
+                </option>
 
-    <option>
-    Sick Leave
-    </option>
+                <option>
+                    Annual Leave
+                </option>
 
-    <option>
-    Annual Leave
-    </option>
+            </select>
 
-</select>
+            <input
+                type="date"
+                id="leaveStartDate">
 
-<input
-type="date"
-id="leaveStartDate">
+            <input
+                type="date"
+                id="leaveEndDate">
 
-<input
-type="date"
-id="leaveEndDate">
+            <button onclick="applyLeave()">
+                Apply Leave
+            </button>
 
-<button onclick="applyLeave()">
+            <br><br>
 
-    Apply Leave
+            <table id="leaveTable">
 
-</button>
+                <thead>
 
-<br><br>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Leave Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
 
-<table id="leaveTable">
+                </thead>
 
-    <thead>
+                <tbody>
 
-        <tr>
+                </tbody>
 
-            <th>ID</th>
-            <th>Employee</th>
-            <th>Leave Type</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Status</th>
-            <th>Action</th>
+            </table>
 
-        </tr>
+            `;
 
-    </thead>
+            loadLeaves();
 
-    <tbody>
+            break;
 
-    </tbody>
-
-</table>
-
-`;
-
-loadLeaves();
-
-break;
 
         // ========================================
         // PERFORMANCE
@@ -430,224 +397,212 @@ break;
 
         case "performance":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<h2>Performance Management</h2>
+            <h2>Performance Management</h2>
 
-<br>
+            <br>
 
-<input
-id="performanceEmployee"
-placeholder="Employee Name">
+            <input
+                id="performanceEmployee"
+                placeholder="Employee Name">
 
-<input
-type="number"
-id="performanceRating"
-placeholder="Rating (1-10)">
+            <input
+                type="number"
+                id="performanceRating"
+                placeholder="Rating (1-10)">
 
-<input
-type="number"
-id="performanceKPI"
-placeholder="KPI Score (%)">
+            <input
+                type="number"
+                id="performanceKPI"
+                placeholder="KPI Score (%)">
 
-<input
-id="performanceComments"
-placeholder="Comments">
+            <input
+                id="performanceComments"
+                placeholder="Comments">
 
-<button onclick="addPerformance()">
+            <button onclick="addPerformance()">
+                Add Review
+            </button>
 
-Add Review
+            <br><br>
 
-</button>
+            <table id="performanceTable">
 
-<br><br>
+                <thead>
 
-<table id="performanceTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Rating</th>
+                        <th>KPI</th>
+                        <th>Comments</th>
+                        <th>Action</th>
+                    </tr>
 
-<thead>
+                </thead>
 
-<tr>
+                <tbody>
 
-<th>ID</th>
-<th>Employee</th>
-<th>Rating</th>
-<th>KPI</th>
-<th>Comments</th>
-<th>Action</th>
+                </tbody>
 
-</tr>
+            </table>
 
-</thead>
+            `;
 
-<tbody>
+            loadPerformance();
 
-</tbody>
+            break;
 
-</table>
-
-`;
-
-loadPerformance();
-
-break;
 
         // ========================================
         // TRAINING
         // ========================================
 
-       case "training":
+        case "training":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<h2>Training Management</h2>
+            <h2>Training Management</h2>
 
-<br>
+            <br>
 
-<input
-id="trainingEmployee"
-placeholder="Employee Name">
+            <input
+                id="trainingEmployee"
+                placeholder="Employee Name">
 
-<input
-id="trainingName"
-placeholder="Training Program">
+            <input
+                id="trainingName"
+                placeholder="Training Program">
 
-<select
-id="trainingStatus">
+            <select id="trainingStatus">
 
-<option>
-Assigned
-</option>
+                <option>
+                    Assigned
+                </option>
 
-<option>
-In Progress
-</option>
+                <option>
+                    In Progress
+                </option>
 
-<option>
-Completed
-</option>
+                <option>
+                    Completed
+                </option>
 
-</select>
+            </select>
 
-<button onclick="addTraining()">
+            <button onclick="addTraining()">
+                Assign Training
+            </button>
 
-Assign Training
+            <br><br>
 
-</button>
+            <table id="trainingTable">
 
-<br><br>
+                <thead>
 
-<table id="trainingTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Training</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
 
-<thead>
+                </thead>
 
-<tr>
+                <tbody>
 
-<th>ID</th>
-<th>Employee</th>
-<th>Training</th>
-<th>Status</th>
-<th>Action</th>
+                </tbody>
 
-</tr>
+            </table>
 
-</thead>
+            `;
 
-<tbody>
+            loadTraining();
 
-</tbody>
+            break;
 
-</table>
-
-`;
-
-loadTraining();
-
-break;
 
         // ========================================
         // PAYROLL
         // ========================================
 
-       case "payroll":
+        case "payroll":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<h2>Payroll Management</h2>
+            <h2>Payroll Management</h2>
 
-<br>
+            <br>
 
-<select
-id="payrollEmployee"
-onchange="calculatePayrollValues()">
+            <select
+                id="payrollEmployee"
+                onchange="calculatePayrollValues()">
 
-<option value="">
-Select Employee
-</option>
+                <option value="">
+                    Select Employee
+                </option>
 
-${employees.map(emp=>`
+                ${employees.map(emp => `
+                    <option value="${emp.emp_name}">
+                        ${emp.emp_name}
+                    </option>
+                `).join("")}
 
-<option value="${emp.emp_name}">
-${emp.emp_name}
-</option>
+            </select>
 
-`).join("")}
+            <input
+                type="number"
+                id="basicSalary"
+                placeholder="Basic Salary">
 
-</select>
+            <input
+                type="number"
+                id="bonus"
+                placeholder="Auto Bonus"
+                readonly>
 
-<input
-type="number"
-id="basicSalary"
-placeholder="Basic Salary">
+            <input
+                type="number"
+                id="deduction"
+                placeholder="Auto Deduction"
+                readonly>
 
-<input
-type="number"
-id="bonus"
-placeholder="Auto Bonus"
-readonly>
+            <button onclick="addPayroll()">
+                Generate Payroll
+            </button>
 
-<input
-type="number"
-id="deduction"
-placeholder="Auto Deduction"
-readonly>
+            <br><br>
 
-<button onclick="addPayroll()">
+            <table id="payrollTable">
 
-Generate Payroll
+                <thead>
 
-</button>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Basic Salary</th>
+                        <th>Present Days</th>
+                        <th>Absent Days</th>
+                        <th>Net Salary</th>
+                        <th>Action</th>
+                    </tr>
 
-<br><br>
+                </thead>
 
-<table id="payrollTable">
+                <tbody>
 
-<thead>
+                </tbody>
 
-<tr>
+            </table>
 
-<th>ID</th>
-<th>Employee</th>
-<th>Basic Salary</th>
-<th>Present Days</th>
-<th>Absent Days</th>
-<th>Net Salary</th>
-<th>Action</th>
+            `;
 
-</tr>
+            loadPayroll();
 
-</thead>
+            break;
 
-<tbody>
-
-</tbody>
-
-</table>
-
-`;
-
-loadPayroll();
-
-break;
 
         // ========================================
         // FEEDBACK
@@ -655,267 +610,326 @@ break;
 
         case "feedback":
 
-content.innerHTML = `
+            content.innerHTML = `
 
-<h2>Feedback Management</h2>
+            <h2>Feedback Management</h2>
 
-<br>
+            <br>
 
-<input
-id="feedbackEmployee"
-placeholder="Employee Name">
+            <input
+                id="feedbackEmployee"
+                placeholder="Employee Name">
 
-<input
-id="feedbackText"
-placeholder="Feedback">
+            <input
+                id="feedbackText"
+                placeholder="Feedback">
 
-<button onclick="addFeedback()">
+            <button onclick="addFeedback()">
+                Submit Feedback
+            </button>
 
-Submit Feedback
+            <br><br>
 
-</button>
+            <table id="feedbackTable">
 
-<br><br>
+                <thead>
 
-<table id="feedbackTable">
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Feedback</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
 
-<thead>
+                </thead>
 
-<tr>
+                <tbody>
 
-<th>ID</th>
-<th>Employee</th>
-<th>Feedback</th>
-<th>Status</th>
-<th>Action</th>
+                </tbody>
 
-</tr>
+            </table>
 
-</thead>
+            `;
 
-<tbody>
+            loadFeedback();
 
-</tbody>
+            break;
 
-</table>
 
-`;
-
-loadFeedback();
-
-break;
         // ========================================
         // ANALYTICS
         // ========================================
-case "analytics":
 
-content.innerHTML = `
+        case "analytics":
 
-<h2>Analytics Dashboard</h2>
+            content.innerHTML = `
 
-<br>
+            <h2>Analytics Dashboard</h2>
 
-<div id="analyticsContent">
+            <br>
 
-</div>
+            <div id="analyticsContent"></div>
 
-`;
+            `;
 
-loadAnalytics();
+            loadAnalytics();
 
-break;
+            break;
 
-case "settings":
 
-    content.innerHTML = `
+        // ========================================
+        // SETTINGS
+        // ========================================
 
-    <h2>System Settings</h2>
+        case "settings":
 
-    <br>
+            content.innerHTML = `
 
-    <div class="settings-box">
+            <h2>System Settings</h2>
 
-        <label>Company Name</label>
+            <br>
 
-        <br><br>
+            <div class="settings-box">
 
-        <input
-        type="text"
-        id="companyName"
-        value="Talent Management System">
+                <label>Company Name</label>
 
-        <br><br>
+                <br><br>
 
-        <label>Admin Name</label>
+                <input
+                    type="text"
+                    id="companyName"
+                    value="Talent Management System">
 
-        <br><br>
+                <br><br>
 
-        <input
-        type="text"
-        id="adminName"
-        value="Admin">
+                <label>Admin Name</label>
 
-        <br><br>
+                <br><br>
 
-        <label>Theme</label>
+                <input
+                    type="text"
+                    id="adminName"
+                    value="Admin">
 
-        <br><br>
+                <br><br>
 
-        <select id="themeSelect">
+                <label>Theme</label>
 
-            <option>Light</option>
+                <br><br>
 
-            <option>Dark</option>
+                <select id="themeSelect">
 
-        </select>
+                    <option>
+                        Light
+                    </option>
 
-        <br><br>
+                    <option>
+                        Dark
+                    </option>
 
-        <button>
+                </select>
 
-            Save Settings
+                <br><br>
 
-        </button>
+                <button onclick="saveSettings()">
+                    Save Settings
+                </button>
 
-    </div>
+            </div>
 
-    `;
+            `;
 
-    break;
+            break;
+
+    }
 
 }
 
-}
+
+// ========================================
+// DASHBOARD IMAGE SLIDER
+// ========================================
+
 const sliderImages = [
 
-"https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",
+    "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200",
 
-"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200",
+    "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1200",
 
-"https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200",
+    "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200",
 
-"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200"
+    "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200"
 
 ];
 
 let currentSlide = 0;
 
-setInterval(()=>{
+setInterval(() => {
 
     const slider =
-    document.getElementById(
-    "sliderImage"
-    );
+        document.getElementById("sliderImage");
 
-    if(!slider) return;
+    if (!slider) return;
 
     currentSlide++;
 
-    if(
-    currentSlide >=
-    sliderImages.length
-    ){
+    if (currentSlide >= sliderImages.length) {
+
         currentSlide = 0;
+
     }
 
     slider.src =
-    sliderImages[currentSlide];
+        sliderImages[currentSlide];
 
-},3000);
-async function loadDashboardStats(){
+}, 3000);
 
-    try{
+
+// ========================================
+// LOAD DASHBOARD STATISTICS
+// ========================================
+
+async function loadDashboardStats() {
+
+    try {
 
         const response = await fetch(
-
             "http://localhost:5000/api/dashboard-stats"
-
         );
 
         const stats =
-        await response.json();
+            await response.json();
+
 
         const employeeCount =
-        document.getElementById(
-        "employeeCount"
-        );
+            document.getElementById("employeeCount");
 
-        if(employeeCount){
+        if (employeeCount) {
 
             employeeCount.innerText =
-            stats.totalEmployees || 0;
+                stats.totalEmployees || 0;
 
         }
+
 
         const candidateCount =
-        document.getElementById(
-        "candidateCount"
-        );
+            document.getElementById("candidateCount");
 
-        if(candidateCount){
+        if (candidateCount) {
 
             candidateCount.innerText =
-            stats.totalCandidates || 0;
+                stats.totalCandidates || 0;
 
         }
+
 
         const attendanceCount =
-        document.getElementById(
-        "attendanceCount"
-        );
+            document.getElementById("attendanceCount");
 
-        if(attendanceCount){
+        if (attendanceCount) {
 
             attendanceCount.innerText =
-            stats.totalAttendance || 0;
+                stats.totalAttendance || 0;
 
         }
+
 
         const payrollCount =
-        document.getElementById(
-        "payrollCount"
-        );
+            document.getElementById("payrollCount");
 
-        if(payrollCount){
+        if (payrollCount) {
 
             payrollCount.innerText =
-            stats.totalPayroll || 0;
+                stats.totalPayroll || 0;
 
         }
+
 
         const leaveCount =
-        document.getElementById(
-        "leaveCount"
-        );
+            document.getElementById("leaveCount");
 
-        if(leaveCount){
+        if (leaveCount) {
 
             leaveCount.innerText =
-            stats.totalLeaves || 0;
+                stats.totalLeaves || 0;
 
         }
 
-        const performanceCount =
-        document.getElementById(
-        "performanceCount"
-        );
 
-        if(performanceCount){
+        const performanceCount =
+            document.getElementById("performanceCount");
+
+        if (performanceCount) {
 
             performanceCount.innerText =
-            stats.totalPerformance || 0;
+                stats.totalPerformance || 0;
+
+        }
+
+
+        // Show last updated time
+
+        const updated =
+            document.getElementById("dashboardUpdated");
+
+        if (updated) {
+
+            const now = new Date();
+
+            updated.innerText =
+                "Last updated: " +
+                now.toLocaleTimeString();
 
         }
 
     }
 
-    catch(error){
+    catch (error) {
 
         console.log(error);
+
+
+        const updated =
+            document.getElementById("dashboardUpdated");
+
+        if (updated) {
+
+            updated.innerText =
+                "⚠️ Unable to load dashboard data";
+
+        }
 
     }
 
 }
+
+
+// ========================================
+// REFRESH DASHBOARD
+// ========================================
+
+function refreshDashboard() {
+
+    const updated =
+        document.getElementById("dashboardUpdated");
+
+    if (updated) {
+
+        updated.innerText =
+            "🔄 Refreshing dashboard...";
+
+    }
+
+    loadDashboardStats();
+
+}
+
+
+// ========================================
+// LOAD DASHBOARD WHEN PAGE OPENS
+// ========================================
+
 window.onload = () => {
 
     showModule("dashboard");
