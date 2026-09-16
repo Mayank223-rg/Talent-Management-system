@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Talent Management System</title>
+
+    <link rel="stylesheet"
+          href="css/dashboard.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-circle">
+                TMS
+            </div>
+
+            <h2>TalentMS</h2>
+
+            <p>Admin Dashboard</p>
+
+        </div>
+
+        <ul>
+
+            <li onclick="showModule('dashboard')">
+                <i class="fas fa-home"></i>
+                Dashboard
+            </li>
+
+            <li onclick="showModule('employee')">
+                <i class="fas fa-users"></i>
+                Employees
+            </li>
+
+            <li onclick="showModule('recruitment')">
+                <i class="fas fa-user-plus"></i>
+                Recruitment
+            </li>
+
+            <li onclick="showModule('attendance')">
+                <i class="fas fa-calendar-check"></i>
+                Attendance
+            </li>
+
+            <li onclick="showModule('leave')">
+                <i class="fas fa-plane-departure"></i>
+                Leave
+            </li>
+
+            <li onclick="showModule('performance')">
+                <i class="fas fa-chart-line"></i>
+                Performance
+            </li>
+
+            <li onclick="showModule('training')">
+                <i class="fas fa-graduation-cap"></i>
+                Training
+            </li>
+
+            <li onclick="showModule('payroll')">
+                <i class="fas fa-money-bill-wave"></i>
+                Payroll
+            </li>
+
+            <li onclick="showModule('feedback')">
+                <i class="fas fa-comments"></i>
+                Feedback
+            </li>
+
+            <li onclick="showModule('analytics')">
+                <i class="fas fa-chart-pie"></i>
+                Analytics
+            </li>
+            <li onclick="showModule('settings')">
+    <i class="fas fa-cog"></i>
+    Settings
+</li>
+
+        </ul>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main">
+
+        <!-- TOP NAVBAR -->
+
+        <div class="navbar">
+
+            <div>
+
+                <h2>Talent Management System</h2>
+
+                <p>
+                    Workforce Management Platform
+                </p>
+
+            </div>
+
+            <div class="profile">
+
+    <button id="themeToggle">
+
+        🌙 Dark Mode
+
+    </button>
+
+    <img
+    src="https://i.pravatar.cc/100"
+    alt="Admin">
+
+    <span>Admin</span>
+
+</div>
+
+        </div>
+
+        <!-- HERO SECTION -->
+
+        <div class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Welcome Back 👋
+        </h1>
+
+        <p>
+
+            Manage employees, recruitment,
+            payroll and workforce analytics
+            from one place.
+
+        </p>
+
+        <button onclick="showModule('employee')">
+
+            Manage Employees
+
+        </button>
+
+        <div class="quick-actions">
+
+            <button onclick="showModule('employee')">
+
+                👨‍💼 Employees
+
+            </button>
+
+            <button onclick="showModule('recruitment')">
+
+                🎯 Recruitment
+
+            </button>
+
+            <button onclick="showModule('attendance')">
+
+                📅 Attendance
+
+            </button>
+
+            <button onclick="showModule('analytics')">
+
+                📈 Analytics
+
+            </button>
+
+        </div>
+
+    </div>
+
+            <div class="hero-image">
+
+                <img
+                id="sliderImage"
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=900"
+                alt="slider">
+
+            </div>
+
+        </div>
+
+       <!-- DYNAMIC CONTENT -->
+
+<div id="content"></div>
+
+<script src="js/employee.js"></script>
+<script src="js/recruitment.js"></script>
+<script src="js/attendance.js"></script>
+<script src="js/leave.js"></script>
+<script src="js/performance.js"></script>
+<script src="js/training.js"></script>
+<script src="js/payroll.js"></script>
+<script src="js/feedback.js"></script>
+<script src="js/analytics.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+
+</html>
